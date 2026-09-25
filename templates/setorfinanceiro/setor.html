@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+            Meu Bolso
+        {% endblock %}
+    </title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+    <div class="app-shell">
+
+        <aside class="sidebar">
+
+            <div class="mark">Meu Bolso</div>
+
+            <div class="mark-sub">Controle mensal</div>
+
+            <nav>
+                <a href=""
+                   class="{% block menu_resumo %}{% endblock %}">
+                    Resumo
+                </a>
+            
+                <a href="{% url 'gastos' %}"
+                   class="{% block menu_gastos %}{% endblock %}">
+                    Gastos
+                </a>
+            
+                <a href="{% url 'categorias' %}"
+                   class="{% block menu_categorias %}{% endblock %}">
+                    categorias
+                </a>
+            
+                <a href="{% url 'relatorios' %}"
+                   class="{% block menu_relatorios %}{% endblock %}">
+                    Relatórios
+                </a>
+            </nav>
+            <div class="user-box">
+                <span class="email">Maria Silva</span>
+            
+                <a href=""
+                   class="btn btn-ghost btn-sm"
+                   style="width:100%; display:block; text-align:center">
+                    Sair
+                </a>
+            </div>
+        </aside>
+
+        <main class="main">
+
+            {% block content %}
+            {% endblock %}
+
+        </main>
+
+    </div>
+
+</body>
+</html>

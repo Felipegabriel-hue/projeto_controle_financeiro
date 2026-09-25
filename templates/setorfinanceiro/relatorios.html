@@ -1,0 +1,129 @@
+
+{% extends "setorfinanceiro/setor.html" %}
+
+{% block title %}
+    Relatórios — Meu Bolso
+{% endblock %}
+
+{% block menu_relatorios %}
+    active
+{% endblock %}
+
+{% block content %}
+
+    <header class="page-head">
+        <div>
+            <h1>Relatórios</h1>
+            <p>Distribuição dos gastos por categoria e por período.</p>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-ghost btn-sm">
+                Exportar PDF
+            </button>
+
+            <button type="button" class="btn btn-ghost btn-sm">
+                Exportar CSV
+            </button>
+        </div>
+    </header>
+
+    <!-- Gráfico de pizza -->
+    <div class="card" style="margin-bottom:24px">
+        <h2 class="section-title">
+            Gastos por categoria — julho
+        </h2>
+
+        <div class="pie-wrap">
+
+            <div
+                class="pie"
+                style="background: conic-gradient(
+                    var(--accent) 0% 30%,
+                    var(--success) 30% 50%,
+                    var(--ink) 50% 75%,
+                    var(--danger) 75% 90%,
+                    #6E9C96 90% 100%
+                );">
+            </div>
+
+            <ul class="legend">
+                <li>
+                    <span class="dot" style="background:var(--accent)"></span>
+                    Alimentação
+                    <span class="val">30%</span>
+                </li>
+
+                <li>
+                    <span class="dot" style="background:var(--success)"></span>
+                    Transporte
+                    <span class="val">20%</span>
+                </li>
+
+                <li>
+                    <span class="dot" style="background:var(--ink)"></span>
+                    Moradia
+                    <span class="val">25%</span>
+                </li>
+
+                <li>
+                    <span class="dot" style="background:var(--danger)"></span>
+                    Lazer
+                    <span class="val">15%</span>
+                </li>
+
+                <li>
+                    <span class="dot" style="background:#6E9C96"></span>
+                    Outros
+                    <span class="val">10%</span>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    <!-- Gráfico de barras -->
+    <div class="card">
+        <h2 class="section-title">
+            Total de gastos por mês
+        </h2>
+
+        <div class="bar-chart">
+
+            <div class="col">
+                <div class="bar" style="height:55%"></div>
+                <span>Fev</span>
+            </div>
+
+            <div class="col">
+                <div class="bar" style="height:70%"></div>
+                <span>Mar</span>
+            </div>
+
+            <div class="col">
+                <div class="bar" style="height:45%"></div>
+                <span>Abr</span>
+            </div>
+
+            <div class="col">
+                <div class="bar" style="height:80%"></div>
+                <span>Mai</span>
+            </div>
+
+            <div class="col">
+                <div class="bar" style="height:65%"></div>
+                <span>Jun</span>
+            </div>
+
+            <div class="col">
+                <div
+                    class="bar"
+                    style="height:95%; background:var(--accent-dark)">
+                </div>
+                <span>Jul</span>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

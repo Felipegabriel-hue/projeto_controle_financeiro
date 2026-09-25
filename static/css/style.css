@@ -1,0 +1,372 @@
+:root {
+    --ink: #10312B;
+    --ink-light: #1B463D;
+    --bg: #F1F3EC;
+    --card: #FFFFFF;
+    --accent: #C99A2E;
+    --accent-dark: #A87F22;
+    --success: #2F7D5A;
+    --success-bg: #E4F1E9;
+    --danger: #B23A48;
+    --danger-bg: #F7E7E8;
+    --border: #DDE3D9;
+    --text: #1E2620;
+    --muted: #5B6459;
+  
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Inter", system-ui, sans-serif;
+  }
+  
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; color: var(--ink); }
+  
+  a { color: inherit; text-decoration: none; }
+  
+  /* ---------- Telas de autenticação (login / cadastro) ---------- */
+  
+  .auth-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background:
+      linear-gradient(180deg, rgba(16,49,43,0.04), rgba(16,49,43,0.04)) ,
+      repeating-linear-gradient(
+        to bottom,
+        transparent 0px, transparent 31px,
+        var(--border) 32px
+      ), var(--bg);
+  }
+  
+  .auth-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 40px 36px;
+    box-shadow: 0 18px 40px -20px rgba(16, 49, 43, 0.35);
+  }
+  
+  .auth-brand {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 4px;
+  }
+  
+  .auth-brand .mark {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--accent-dark);
+  }
+  
+  .auth-card h1 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+  
+  .auth-card p.subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    margin-bottom: 28px;
+  }
+  
+  .field {
+    margin-bottom: 18px;
+  }
+  
+  .field label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-light);
+    margin-bottom: 6px;
+  }
+  
+  .field input,
+  .field select {
+    width: 100%;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 14px;
+    font-family: var(--font-body);
+    background: #FCFCFA;
+    color: var(--text);
+  }
+  
+  .field input:focus,
+  .field select:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 1px;
+    border-color: var(--accent);
+  }
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 11px 18px;
+    border-radius: 6px;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.05s ease;
+  }
+  
+  .btn:active { transform: translateY(1px); }
+  
+  .btn-primary { background: var(--ink); color: #fff; width: 100%; padding: 12px; }
+  .btn-primary:hover { background: var(--ink-light); }
+  
+  .btn-accent { background: var(--accent); color: var(--ink); }
+  .btn-accent:hover { background: var(--accent-dark); color: #fff; }
+  
+  .btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--ink); }
+  
+  .btn-danger { background: var(--danger-bg); color: var(--danger); }
+  .btn-danger:hover { background: var(--danger); color: #fff; }
+  
+  .btn-sm { padding: 6px 10px; font-size: 12px; }
+  
+  .auth-switch {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  
+  .auth-switch a { color: var(--accent-dark); font-weight: 600; }
+  
+  .form-msg {
+    font-size: 13px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 18px;
+    display: none;
+  }
+  
+  .form-msg.show { display: block; }
+  .form-msg.error { background: var(--danger-bg); color: var(--danger); }
+  .form-msg.success { background: var(--success-bg); color: var(--success); }
+  
+  /* ---------- Layout principal (pós-login) ---------- */
+  
+  .app-shell {
+    display: grid;
+    grid-template-columns: 232px 1fr;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    background: var(--ink);
+    color: #EDEFEA;
+    padding: 28px 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar .mark {
+    font-family: var(--font-display);
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 2px;
+  }
+  
+  .sidebar .mark-sub {
+    font-size: 11px;
+    color: #9FB3AB;
+    margin-bottom: 32px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  
+  .sidebar nav { display: flex; flex-direction: column; gap: 4px; flex: 1; }
+  
+  .sidebar nav a {
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    color: #CBD6CF;
+  }
+  
+  .sidebar nav a:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .sidebar nav a.active { background: var(--accent); color: var(--ink); font-weight: 600; }
+  
+  .sidebar .user-box {
+    font-size: 12px;
+    color: #9FB3AB;
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 16px;
+    margin-top: 16px;
+  }
+  
+  .sidebar .user-box .email { color: #EDEFEA; display: block; margin-bottom: 8px; word-break: break-all; }
+  
+  .main {
+    padding: 32px 40px 60px;
+    max-width: 1080px;
+  }
+  
+  .main header.page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .main header.page-head h1 { font-size: 26px; }
+  .main header.page-head p { color: var(--muted); font-size: 14px; }
+  
+  /* ---------- Cartões / grid ---------- */
+  
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+  }
+  
+  .grid {
+    display: grid;
+    gap: 18px;
+  }
+  
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  
+  @media (max-width: 900px) {
+    .grid-3, .grid-2 { grid-template-columns: 1fr; }
+    .app-shell { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+  }
+  
+  /* ---------- "Carimbo" de saldo (elemento assinatura) ---------- */
+  
+  .stamp {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    padding: 14px 20px;
+    border: 2px dashed var(--ink);
+    border-radius: 8px;
+    transform: rotate(-1.2deg);
+    background: rgba(255,255,255,0.6);
+  }
+  
+  .stamp.negativo { border-color: var(--danger); }
+  .stamp .stamp-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+  .stamp .stamp-value {
+    font-family: var(--font-display);
+    font-size: 30px;
+    color: var(--ink);
+  }
+  .stamp.negativo .stamp-value { color: var(--danger); }
+  
+  /* ---------- Métricas ---------- */
+  
+  .metric-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 6px; }
+  .metric-value { font-family: var(--font-display); font-size: 26px; color: var(--ink); }
+  .metric-value.pos { color: var(--success); }
+  .metric-value.neg { color: var(--danger); }
+  
+  /* ---------- Tabelas ---------- */
+  
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 10px 8px; border-bottom: 1px solid var(--border); }
+  th { color: var(--muted); font-weight: 600; font-size: 12px; text-transform: uppercase; letter-spacing: 0.03em; }
+  tr:last-child td { border-bottom: none; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  td.actions { text-align: right; white-space: nowrap; }
+  
+  /* ---------- Badges / tags ---------- */
+  
+  .tag {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    background: var(--success-bg);
+    color: var(--success);
+  }
+  
+  .tag.agendado { background: #EFEAD9; color: var(--accent-dark); }
+  
+  .alert {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    margin-bottom: 12px;
+    border: 1px solid transparent;
+  }
+  .alert.warn { background: #FBF2DE; color: #8A6415; border-color: #EFDBA5; }
+  .alert.danger { background: var(--danger-bg); color: var(--danger); border-color: #ECC5C9; }
+  
+  /* ---------- Formulários dentro de cards ---------- */
+  
+  .inline-form { display: flex; gap: 12px; flex-wrap: wrap; align-items: flex-end; }
+  .inline-form .field { margin-bottom: 0; flex: 1; min-width: 140px; }
+  
+  .section-title { font-size: 15px; margin-bottom: 14px; color: var(--ink); }
+  
+  .empty-state { color: var(--muted); font-size: 14px; padding: 20px 0; text-align: center; }
+  
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
+  
+  .progress-bar { width: 100%; height: 8px; border-radius: 20px; background: var(--border); overflow: hidden; }
+  .progress-bar > div { height: 100%; background: var(--success); }
+  .progress-bar.warn > div { background: var(--accent); }
+  .progress-bar.over > div { background: var(--danger); }
+  
+  .toolbar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; flex-wrap: wrap; gap: 10px; }
+  
+  /* ---------- Gráficos (CSS puro, sem bibliotecas) ---------- */
+  
+  .pie-wrap { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+  
+  .pie {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .legend { list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 13px; }
+  .legend li { display: flex; align-items: center; gap: 8px; }
+  .legend .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend .val { margin-left: auto; color: var(--muted); font-variant-numeric: tabular-nums; }
+  
+  .bar-chart {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    height: 180px;
+    padding-top: 10px;
+  }
+  
+  .bar-chart .col { display: flex; flex-direction: column; align-items: center; gap: 8px; flex: 1; height: 100%; justify-content: flex-end; }
+  .bar-chart .bar { width: 100%; max-width: 40px; border-radius: 4px 4px 0 0; background: var(--ink); }
+  .bar-chart .col span { font-size: 12px; color: var(--muted); }

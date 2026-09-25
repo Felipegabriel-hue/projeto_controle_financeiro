@@ -1,6 +1,18 @@
+
 from django.shortcuts import render
 
-# Create your views here.
-from django.http import HttpResponse
-def index (request):
-    return HttpResponse ('<h1>Olá mundo</h1>')
+# Página inicial
+def setor(request):
+    return render(request, 'setorfinanceiro/setor.html')
+
+# Página de gastos
+def gastos(request):
+    return render(request, 'setorfinanceiro/gastos.html')
+
+# Página de categorias
+def categorias(request):
+    return render(request, 'setorfinanceiro/categorias.html')
+
+# Página de relatórios
+def relatorios(request):
+    return render(request, 'setorfinanceiro/relatorios.html')
