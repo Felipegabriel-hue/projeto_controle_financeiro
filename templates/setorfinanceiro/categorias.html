@@ -1,7 +1,8 @@
 {% extends "setorfinanceiro/setor.html" %}
+{% load static %}
 
 {% block title %}
-    Categoria — Meu Bolso
+    Categorias — Meu Bolso
 {% endblock %}
 
 {% block menu_categorias %}
@@ -20,123 +21,48 @@
     <div class="card" style="margin-bottom:24px">
         <h2 class="section-title">Nova categoria</h2>
 
-        <div class="inline-form">
+        <form class="inline-form" id="form-categoria">
+
             <div class="field">
                 <label for="nome_categoria">Nome</label>
+
                 <input
                     type="text"
                     id="nome_categoria"
                     placeholder="Ex: Educação"
+                    required
                 >
             </div>
 
             <div class="field">
-                <label for="limite_categoria">Limite mensal (opcional)</label>
+                <label for="limite_categoria">
+                    Limite mensal (opcional)
+                </label>
+
                 <input
-                    type="text"
+                    type="number"
                     id="limite_categoria"
-                    placeholder="R$ 0,00"
+                    placeholder="0.00"
+                    min="0"
+                    step="0.01"
                 >
             </div>
 
-            <button type="button" class="btn btn-accent">
+            <button type="submit" class="btn btn-accent">
                 Adicionar
             </button>
-        </div>
+
+        </form>
     </div>
 
-    <div class="grid grid-2">
+    <div class="grid grid-2" id="lista-categorias">
 
-        <div class="card">
-            <div class="toolbar">
-                <strong>Alimentação</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <div class="progress-bar warn">
-                <div style="width:70%"></div>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted); margin-top:8px">
-                R$ 700,00 de R$ 1.000,00 (70%)
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="toolbar">
-                <strong>Lazer</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <div class="progress-bar over">
-                <div style="width:100%"></div>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted); margin-top:8px">
-                R$ 420,00 de R$ 400,00 (limite excedido)
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="toolbar">
-                <strong>Transporte</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <div class="progress-bar">
-                <div style="width:40%"></div>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted); margin-top:8px">
-                R$ 200,00 de R$ 500,00 (40%)
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="toolbar">
-                <strong>Moradia</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted)">
-                Sem limite definido
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="toolbar">
-                <strong>Saúde</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted)">
-                Sem limite definido
-            </p>
-        </div>
-
-        <div class="card">
-            <div class="toolbar">
-                <strong>Contas / Boletos</strong>
-                <button type="button" class="btn btn-ghost btn-sm">
-                    Editar limite
-                </button>
-            </div>
-
-            <p style="font-size:13px; color:var(--muted)">
-                Sem limite definido
-            </p>
-        </div>
+        <p class="empty-state">
+            Carregando categorias...
+        </p>
 
     </div>
+
+    <script src="{% static 'js/categorias.js' %}"></script>
 
 {% endblock %}

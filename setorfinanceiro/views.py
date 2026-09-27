@@ -16,3 +16,6 @@ def categorias(request):
 # Página de relatórios
 def relatorios(request):
     return render(request, 'setorfinanceiro/relatorios.html')
+#pagina de resumo
+def resumo(request):
+    return render(request,'setorfinanceiro/resumo.html')

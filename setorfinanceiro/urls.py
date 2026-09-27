@@ -6,4 +6,5 @@ urlpatterns = [
     path('gastos/', views.gastos, name='gastos'),
     path('categorias/', views.categorias, name='categorias'),
     path('relatorios/', views.relatorios, name='relatorios'),
+    path ('resumo/', views.resumo, name='resumo'),
 ]

@@ -1,0 +1,96 @@
+{% extends "setorfinanceiro/setor.html" %}
+{% load static %}
+
+{% block title %}
+    Resumo — Meu Bolso
+{% endblock %}
+
+{% block menu_resumo %}
+    active
+{% endblock %}
+
+{% block content %}
+
+    <header class="page-head">
+        <div>
+            <h1>Resumo financeiro</h1>
+            <p>Visão geral das suas finanças no mês.</p>
+        </div>
+
+        <span class="stamp">
+            <span class="stamp-label">Saldo do mês</span>
+
+            <span class="stamp-value" id="saldo-mes">
+                R$ 0,00
+            </span>
+        </span>
+    </header>
+
+    <div class="grid grid-3" style="margin-bottom:24px">
+
+        <div class="card">
+            <div class="metric-label">Receitas</div>
+
+            <div class="metric-value pos" id="total-receitas">
+                R$ 0,00
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="metric-label">Despesas</div>
+
+            <div class="metric-value neg" id="total-despesas">
+                R$ 0,00
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="metric-label">Lançamentos no mês</div>
+
+            <div class="metric-value" id="quantidade-lancamentos">
+                0
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card" style="margin-bottom:24px">
+        <div class="alert warn" id="alerta-resumo">
+            <strong>Atenção!</strong> Você ainda não cadastrou nenhum gasto neste mês.
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="toolbar">
+            <h2 class="section-title">Últimos gastos</h2>
+
+            <a href="{% url 'gastos' %}" class="btn btn-ghost btn-sm">
+                Ver todos
+            </a>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Categoria</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                </tr>
+            </thead>
+
+            <tbody id="lista-ultimos-gastos">
+                <tr>
+                    <td colspan="4" class="empty-state">
+                        Carregando gastos...
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+    <script src="{% static 'js/resumo.js' %}"></script>
+
+{% endblock %}
