@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Entrar — Meu Bolso</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-brand">
+            <span class="mark">Meu Bolso</span>
+        </div>
+
+        <h1>Entrar na conta</h1>
+
+        <p class="subtitle">
+            Controle seus gastos mensais de forma simples.
+        </p>
+
+        <!-- Form configurado com POST e token de segurança -->
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+
+            <!-- Exibe mensagem de erro caso o utilizador erre a senha ou não esteja cadastrado -->
+            {% if erro %}
+                <div style="color: #e53e3e; background-color: #fff5f5; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 14px; text-align: center;">
+                    {{ erro }}
+                </div>
+            {% endif %}
+
+            <div class="field">
+                <label for="usuario">Usuário</label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Seu nome de usuário"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="senha">Senha</label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="••••••••"
+                    required
+                >
+            </div>
+
+            <!-- Botão do tipo submit em vez da tag <a> -->
+            <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; cursor: pointer;"
+            >
+                Entrar
+            </button>
+
+        </form>
+
+        <p class="auth-switch">
+            Ainda não tem conta?
+            <a href="{% url 'cadastro' %}">
+                Cadastre-se
+            </a>
+        </p>
+
+    </div>
+
+</body>
+</html>

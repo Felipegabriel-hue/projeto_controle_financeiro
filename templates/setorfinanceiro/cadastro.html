@@ -1,0 +1,155 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Criar conta — Meu Bolso</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body class="auth-page">
+
+    <div class="auth-card">
+
+        <div class="auth-brand">
+            <span class="mark">Meu Bolso</span>
+        </div>
+
+        <h1>Criar conta</h1>
+
+        <p class="subtitle">
+            Leva menos de um minuto.
+        </p>
+
+        <!-- Formulário com POST e token de segurança -->
+        <form method="POST" action="{% url 'cadastro' %}">
+            {% csrf_token %}
+
+            <!-- Exibe mensagens de erro (ex: senhas não coincidem ou usuário existente) -->
+            {% if erro %}
+                <div style="color: #e53e3e; background-color: #fff5f5; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 14px; text-align: center;">
+                    {{ erro }}
+                </div>
+            {% endif %}
+
+            <div class="field">
+                <label for="usuario">Nome de Usuário</label>
+
+                <input
+                    type="text"
+                    id="usuario"
+                    name="usuario"
+                    placeholder="Seu nome de usuário"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="email">E-mail</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="voce@email.com"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="senha">Senha</label>
+
+                <input
+                    type="password"
+                    id="senha"
+                    name="senha"
+                    placeholder="••••••••"
+                    required
+                >
+            </div>
+
+            <div class="field">
+                <label for="confirmar_senha">Confirmar Senha</label>
+
+                <input
+                    type="password"
+                    id="confirmar_senha"
+                    name="confirmar_senha"
+                    placeholder="••••••••"
+                    required
+                >
+            </div>
+
+            <!-- Opção de Mostrar Senha -->
+            <div style="display: flex; align-items: center; gap: 8px; margin: 15px 0 20px 0; font-size: 14px;">
+                <input type="checkbox" id="toggleSenha" onclick="mostrarSenha()" style="cursor: pointer;">
+                <label for="toggleSenha" style="cursor: pointer; margin: 0; font-weight: normal;">Mostrar senha</label>
+            </div>
+
+            <!-- Botão do tipo submit para disparar a requisição POST -->
+            <button
+                type="submit"
+                class="btn btn-primary"
+                style="width: 100%; cursor: pointer;"
+            >
+                Cadastrar
+            </button>
+
+        </form>
+
+        <p class="auth-switch">
+            Já tem conta?
+
+            <a href="{% url 'login' %}">
+                Entrar
+            </a>
+        </p>
+
+        <!-- Seção: Lista de Usuários Cadastrados na parte inferior -->
+        <hr style="border: 0; border-top: 1px solid rgba(255, 255, 255, 0.2); margin: 25px 0 15px 0;">
+
+        <div class="registered-users" style="text-align: left;">
+            <h3 style="font-size: 15px; font-weight: 600; margin-bottom: 10px;">
+                Usuários Cadastrados
+            </h3>
+
+            {% if usuarios %}
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    {% for u in usuarios %}
+                        <li style="padding: 8px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1); font-size: 13px; display: flex; justify-content: space-between; align-items: center;">
+                            <span><strong>{{ u.username }}</strong></span>
+                            <span style="opacity: 0.7; font-size: 12px;">{{ u.email }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p style="font-size: 13px; opacity: 0.7; margin: 0;">Nenhum usuário cadastrado ainda.</p>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <!-- Script JavaScript para alterar a visibilidade da senha -->
+    <script>
+        function mostrarSenha() {
+            const senhaInput = document.getElementById("senha");
+            const confirmarSenhaInput = document.getElementById("confirmar_senha");
+            const tipo = senhaInput.type === "password" ? "text" : "password";
+
+            senhaInput.type = tipo;
+            confirmarSenhaInput.type = tipo;
+        }
+    </script>
+
+</body>
+</html>
